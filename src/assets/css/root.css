@@ -1,0 +1,12 @@
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+
+
+body {
+    font-family: 'FiraGO', sans-serif;
+}
