@@ -1,0 +1,79 @@
+<div class="grid grid-cols-12 gap-10 container mx-auto px-4 my-20">
+  <div class="col-span-12 sm:col-span-3">
+      
+      <div class="rounded-lg card grow items-center pb-4 px-4 pt-2 shadow-md">
+
+          <!-- Doctor avatar -->
+          <div class="avatar h-24 w-24 mx-auto">
+              <img class="rounded-full" src='assets/images/200x200.png'/>
+              <div class="absolute right-0 m-1 h-4 w-4 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"></div>
+          </div>
+  
+          <!-- Doctor name -->
+          <h3 class="pt-3 text-lg font-medium text-maincolor-50 text-center ">
+              {{ bookingsData?.bookings?.[0].firstName }} {{ bookingsData?.bookings?.[0].lastName }}
+          </h3>
+          
+          <div class="my-5">
+              <p class=" text-center text-maincolor-100">ელ.ფოსტა</p>
+              <p class="text-xs+ text-center text-maincolor-100/50">{{ bookingsData?.bookings?.[0].email }}</p>
+          </div>
+      </div>
+  </div>
+
+  
+  <div class="col-span-12 sm:col-span-9">
+    <div class="mb-5">
+      <span class="text-maincolor-100 mr-5 font-bold text-lg">{{ days[0].date | date:'YYYY' }}</span>
+      <button (click)="previousWeek()" [disabled]="disablePrevious()" class="p-3 rounded-full shadow-md bg-white"> 
+        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5624 9.55L0.349902 5.35C0.299902 5.3 0.264569 5.24583 0.243902 5.1875C0.222902 5.12916 0.212402 5.06666 0.212402 5C0.212402 4.93333 0.222902 4.87083 0.243902 4.8125C0.264569 4.75416 0.299902 4.7 0.349902 4.65L4.5624 0.437497C4.67907 0.32083 4.8249 0.262497 4.9999 0.262497C5.1749 0.262497 5.3249 0.324997 5.4499 0.449997C5.5749 0.574997 5.6374 0.72083 5.6374 0.887497C5.6374 1.05416 5.5749 1.2 5.4499 1.325L1.7749 5L5.4499 8.675C5.56657 8.79167 5.6249 8.93533 5.6249 9.106C5.6249 9.277 5.5624 9.425 5.4374 9.55C5.3124 9.675 5.16657 9.7375 4.9999 9.7375C4.83324 9.7375 4.6874 9.675 4.5624 9.55Z" fill="#053354"/>
+        </svg>    
+      </button>
+      <!-- - {{ days[6].date | date:'MMM d, yyyy' }} -->
+      <span class="mx-5 text-maincolor-50 px-3 py-2 border border-maincolor-50 rounded-full my-4">{{ days[0].date | date:'MMMM' }} </span>
+      <button (click)="nextWeek()" class="p-3 rounded-full shadow-md bg-white">
+        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.4376 0.450002L5.6501 4.65C5.7001 4.7 5.73543 4.75417 5.7561 4.8125C5.7771 4.87084 5.7876 4.93334 5.7876 5C5.7876 5.06667 5.7771 5.12917 5.7561 5.1875C5.73543 5.24584 5.7001 5.3 5.6501 5.35L1.4376 9.5625C1.32093 9.67917 1.1751 9.7375 1.0001 9.7375C0.825098 9.7375 0.675098 9.675 0.550098 9.55C0.425098 9.425 0.362598 9.27917 0.362598 9.1125C0.362598 8.94584 0.425098 8.8 0.550098 8.675L4.2251 5L0.550098 1.325C0.433431 1.20833 0.375098 1.06467 0.375098 0.894002C0.375098 0.723001 0.437598 0.575002 0.562598 0.450002C0.687598 0.325002 0.833431 0.262502 1.0001 0.262502C1.16676 0.262502 1.3126 0.325002 1.4376 0.450002Z" fill="#053354"/>
+        </svg>  
+      </button>
+    </div>
+    
+    <table class="w-full shadow-md rounded-lg">
+      <thead class="bg-[#ECF2F8] my-2 rounded-lg">
+        <tr>
+          <th class="flex justify-center py-3 px-3">
+            <button (click)="previousWeek()" [disabled]="disablePrevious()" class="py-3 px-4  rounded-full hover:shadow-md hover:bg-white mr-2"> 
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5624 9.55L0.349902 5.35C0.299902 5.3 0.264569 5.24583 0.243902 5.1875C0.222902 5.12916 0.212402 5.06666 0.212402 5C0.212402 4.93333 0.222902 4.87083 0.243902 4.8125C0.264569 4.75416 0.299902 4.7 0.349902 4.65L4.5624 0.437497C4.67907 0.32083 4.8249 0.262497 4.9999 0.262497C5.1749 0.262497 5.3249 0.324997 5.4499 0.449997C5.5749 0.574997 5.6374 0.72083 5.6374 0.887497C5.6374 1.05416 5.5749 1.2 5.4499 1.325L1.7749 5L5.4499 8.675C5.56657 8.79167 5.6249 8.93533 5.6249 9.106C5.6249 9.277 5.5624 9.425 5.4374 9.55C5.3124 9.675 5.16657 9.7375 4.9999 9.7375C4.83324 9.7375 4.6874 9.675 4.5624 9.55Z" fill="#053354"/>
+              </svg>    
+            </button>
+
+            <button (click)="nextWeek()" class="py-3 px-4 rounded-full hover:shadow-md hover:bg-white">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.4376 0.450002L5.6501 4.65C5.7001 4.7 5.73543 4.75417 5.7561 4.8125C5.7771 4.87084 5.7876 4.93334 5.7876 5C5.7876 5.06667 5.7771 5.12917 5.7561 5.1875C5.73543 5.24584 5.7001 5.3 5.6501 5.35L1.4376 9.5625C1.32093 9.67917 1.1751 9.7375 1.0001 9.7375C0.825098 9.7375 0.675098 9.675 0.550098 9.55C0.425098 9.425 0.362598 9.27917 0.362598 9.1125C0.362598 8.94584 0.425098 8.8 0.550098 8.675L4.2251 5L0.550098 1.325C0.433431 1.20833 0.375098 1.06467 0.375098 0.894002C0.375098 0.723001 0.437598 0.575002 0.562598 0.450002C0.687598 0.325002 0.833431 0.262502 1.0001 0.262502C1.16676 0.262502 1.3126 0.325002 1.4376 0.450002Z" fill="#053354"/>
+              </svg>  
+            </button>
+
+          </th>
+          <th *ngFor="let day of days" class="text-maincolor-50 px-4">{{ day.date | date:'d' }} <span class="text-maincolor-100">( {{ day.date | date:'EEE' }} )</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let time of times; let timeIndex = index">
+          <tr>
+            <td class="text-maincolor-100 p-3 text-center font-bold">{{ time }}</td>
+            <td 
+              class="text-maincolor-100 p-3 text-center"
+              *ngFor="let day of days; let dayIndex = index"
+              [ngClass]="{'non-working': !day.working, 'booked': bookings[dayIndex][timeIndex]}"
+              (click)="bookSlot(dayIndex, timeIndex)"
+            >
+              {{ bookings[dayIndex][timeIndex] ? 'დაჯავშნილია' : 'დაჯავშნა' }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

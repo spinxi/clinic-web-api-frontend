@@ -1,0 +1,46 @@
+<div class="grid grid-cols-12 gap-10 container mx-auto px-4 my-20">
+    <div class="col-span-12 sm:col-span-3">
+        
+        <div class="rounded-lg card grow items-center pb-4 px-4 pt-2 shadow-md">
+
+            <!-- Doctor avatar -->
+            <div class="avatar h-24 w-24 mx-auto">
+                <img class="rounded-full" [src]="userInfo?.profileImage || 'assets/images/200x200.png'"/>
+                <div class="absolute right-0 m-1 h-4 w-4 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"></div>
+            </div>
+    
+            <!-- Doctor name -->
+            <h3 class="pt-3 text-lg font-medium text-maincolor-50 text-center ">
+                {{ userInfo?.firstName }} {{ userInfo?.lastName }}
+            </h3>
+    
+            <!-- Doctor category name -->
+            <div class="my-5">
+                <p class=" text-center text-maincolor-100">პირადი ნომერი</p>
+                <p class="text-xs+ text-center text-maincolor-100/50">{{ userInfo?.idNumber }}</p>
+            </div>
+            
+            <div class="my-5">
+                <p class=" text-center text-maincolor-100">ელ.ფოსტა</p>
+                <p class="text-xs+ text-center text-maincolor-100/50">{{ userInfo?.email }}</p>
+            </div>
+
+            <div class="my-5">
+                <p class=" text-center text-maincolor-100">პაროლის შეცვლა</p>
+            </div>
+
+            <div class="my-3">
+                <p class=" text-center text-maincolor-100">ჩემი ჯავშანი</p>
+                <p class=" text-center text-maincolor-100/50">( {{userInfo?.bookingCount}} )</p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-span-12 sm:col-span-9">
+        <p class="text-lg text-maincolor-50">ჩემი ჯავშანი ( {{userInfo?.bookingCount}} )</p>
+        <div class="card">
+
+        </div>
+    </div>
+</div>

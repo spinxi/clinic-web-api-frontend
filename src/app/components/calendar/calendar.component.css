@@ -1,0 +1,39 @@
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.current-date {
+  background-color: #e6f7ff; /* Light blue background for current date */
+}
+
+.non-working {
+  background-color: #f2f2f2; /* Light gray background for non-working days */
+}
+
+.booked {
+  background-color: #ffcccc; /* Light red background for booked slots */
+  cursor: not-allowed;
+}
+
+.available {
+  cursor: pointer;
+}
+
+.booked:hover,
+.available:hover {
+  background-color: #ffe6e6; /* Light pink background on hover for booked and available slots */
+}

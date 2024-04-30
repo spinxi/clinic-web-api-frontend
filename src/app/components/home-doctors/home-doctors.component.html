@@ -1,0 +1,50 @@
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:grid-cols-3">
+
+
+    <div *ngFor="let doctor of doctors" class="rounded-lg border border-maincolor-50 grow items-center pb-4 px-4 pt-2">
+    <!-- Doctor count -->
+        <div class="flex justify-between items-center">
+            <!-- Doctor count icon -->
+            <span class="bg-[#ECF2F8]/50 px-4 py-2 rounded-lg flex justify-between items-center">
+                <img src="assets/images/eye.png" class="mr-2">
+                <span class="text-maincolor-100/50 whitespace-nowrap">129 371</span>
+            </span>
+
+            <!-- Pin icon -->
+            <span *ngIf="doctor?.Pinned">
+                <img src="assets/images/pin.png" alt="">
+            </span>
+        </div>
+
+        <!-- Doctor avatar -->
+        <div class="avatar h-24 w-24 mx-auto">
+            <img class="rounded-full" [src]="doctor.profileImage || 'assets/images/200x200.png'"/>
+            <div class="absolute right-0 m-1 h-4 w-4 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"></div>
+        </div>
+
+        <!-- Doctor name -->
+        <h3 class="pt-3 text-lg font-medium text-maincolor-100 text-center">
+            {{ doctor?.firstName }} {{ doctor?.lastName }}
+        </h3>
+
+        <!-- Doctor category name -->
+        <p class="text-xs+ text-center">{{ doctor?.category.name }}</p>
+
+        <!-- Doctor rating (stars) -->
+        <div class="flex space-x-2 my-2 justify-center"> 
+            <img src="assets/images/star.png" alt="">
+            <img src="assets/images/star.png" alt="">
+            <img src="assets/images/star.png" alt="">
+            <img src="assets/images/star.png" alt="">
+        </div>
+
+        <!-- Appointment button -->
+        <div class="flex justify-center mt-5">
+            <a [routerLink]="['/booking', doctor.doctorId]" class="btn border px-5 mx-10 py-2 space-x-2 hover:border-maincolor-50/30 rounded-full bg-white border-maincolor-50 font-medium hover:text-maincolor-100 text-maincolor-50 hover:bg-maincolor-50/30">
+                <span> მიღებაზე ჩაწერა </span>
+            </a>
+        </div>  
+    </div>
+
+
+</div>

@@ -1,3 +1,4 @@
+<app-login-modal #childModal></app-login-modal>
 <nav class="container mx-auto px-10">
     <div>
         <div class="relative flex h-16 items-center justify-between">
@@ -51,16 +52,22 @@
                 </div>
 
 
-
-                
-
                 <!-- Profile dropdown -->
                 <div class="relative ml-3">
-                    <div class="relative rounded-full bg-[#F0FAFF] py-2 px-3 ml-3">
-                        <button type="button" class="text-maincolor-100 hover:text-maincolor-50">ავტორიზაცია</button>
-                        <span>/</span>
-                        <button type="button" class="text-maincolor-100 hover:text-maincolor-50">რეგისტრაცია</button>
+                    <div *ngIf="currentUser | async as user; else loginButtons" class="relative rounded-full bg-[#F0FAFF] py-2 px-3 ml-3">
+                        <a routerLink="profile">
+                            <span class="text-maincolor-100 hover:text-maincolor-50">{{ user.firstName }} {{ user.lastName }}</span>
+                        </a>
                     </div>
+                    <ng-template #loginButtons >
+                        <div class="relative rounded-full bg-[#F0FAFF] py-2 px-3 ml-3">
+                            <button (click)="toggleModal()" type="button" class="text-maincolor-100 hover:text-maincolor-50">ავტორიზაცია</button>
+                            <span>/</span>
+                            <a routerLink="/register">
+                                <button type="button" class="text-maincolor-100 hover:text-maincolor-50">რეგისტრაცია</button>
+                            </a>
+                        </div>
+                    </ng-template>
 
                     <!--
                         Dropdown menu, show/hide based on menu state.
@@ -72,11 +79,12 @@
                         From: "transform opacity-100 scale-100"
                         To: "transform opacity-0 scale-95"
                     -->
-                    <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100", Not Active: "" -->
+                    <!-- <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">პროფილი</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">გასვლა</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

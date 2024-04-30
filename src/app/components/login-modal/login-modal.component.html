@@ -1,0 +1,49 @@
+<div
+    class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
+    *ngIf="showModal"
+    role="dialog"
+>
+    <div class="absolute inset-0 bg-[#053354]/75 transition-opacity duration-300" (click)="toggleModal()"></div>
+    <div class="relative max-w-lg lg:w-1/3 rounded-lg bg-white p-16 transition-opacity duration-300 dark:bg-navy-700">
+        <p class="text-maincolor-50 text-2xl font-medium">ავტორიზაცია</p>
+
+        <div class="mt-4">
+
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="grid grid-cols-1 gap-4">
+                    <label class="block">
+                        <span class="relative mt-1.5 flex">
+                            <input
+                                class="form-input peer w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                placeholder="ელ. ფოსტა / ტელეფონის ნომერი"
+                                type="text"
+                                formControlName="email"
+                            />    
+                        </span>
+                    </label>
+                    <label class="block">
+                        <span class="relative mt-1.5 flex">
+                            <input
+                                class="form-input peer w-full rounded-full border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                placeholder="პაროლი"
+                                type="password"
+                                formControlName="password"
+                            />
+                        </span>
+                    </label>
+            
+                    <span class="text-right text-maincolor-100">
+                        პაროლის აღდგენა
+                    </span>
+                </div>
+            
+            
+                <div class="mt-7">
+                    <button type="submit" class="rounded-full bg-maincolor-100 px-8 py-2 text-white text-base font-medium">
+                        შესვლა
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
